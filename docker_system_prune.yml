@@ -1,5 +1,5 @@
 ---
-- name: Update packages on Ubuntu hosts
+- name: Docker aufräumen
   hosts: all
   
   tasks:
