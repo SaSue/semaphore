@@ -1,0 +1,19 @@
+---
+- name: Docker Portainer aktualisieren
+  hosts: all
+  
+  tasks:
+  - name: Docker Portainer Stop
+    ansible.builtin.shell: docker stop portainer_agent
+    args:
+      executable: /bin/bash
+
+  - name: Docker Portainer Remove
+    ansible.builtin.shell: docker remove portainer_agent
+    args:
+      executable: /bin/bash
+
+  - name: Docker Portainer Installieren
+    ansible.builtin.shell: docker run -itd --network=traefik --label traefik.docker.network=traefik --label traefik.http.routers.portainer.entrypoints=websecure --label traefik.http.routers.portainer.rule=Host\(\"portainer.intranet.suechting.com\"\) --label traefik.http.routers.portainer.tls=true --label traefik.http.services.portainer.loadbalancer.server.port=9443 --label traefik.http.services.portainer.loadbalancer.server.scheme=https -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always  -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+    args:
+      executable: /bin/bash
