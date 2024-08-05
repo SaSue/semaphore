@@ -4,12 +4,12 @@
   
   tasks:
   - name: Docker Portainer Stop
-    ansible.builtin.shell: docker stop portainer_agent
+    ansible.builtin.shell: docker stop portainer
     args:
       executable: /bin/bash
 
   - name: Docker Portainer Remove
-    ansible.builtin.shell: docker remove portainer_agent
+    ansible.builtin.shell: docker remove portainer
     args:
       executable: /bin/bash
 
