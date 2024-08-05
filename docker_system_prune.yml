@@ -1,1 +1,9 @@
-
+---
+- name: Update packages on Ubuntu hosts
+  hosts: all
+  
+  tasks:
+  - name: Run a command that uses non-posix shell-isms (in this example /bin/sh doesn't handle redirection and wildcards together but bash does)
+    ansible.builtin.shell: docker system prune -f
+    args:
+      executable: /bin/bash
