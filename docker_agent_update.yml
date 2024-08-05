@@ -1,9 +1,19 @@
 ---
-- name: Update packages on Ubuntu hosts
+- name: Docker Agent aktualisieren
   hosts: all
   
   tasks:
-  - name: Cleanup docker
+  - name: Docker Agent Stop
     ansible.builtin.shell: docker stop portainer_agent
+    args:
+      executable: /bin/bash
+
+  - name: Docker Agent Remove
+    ansible.builtin.shell: docker remove portainer_agent
+    args:
+      executable: /bin/bash
+
+  - name: Docker Agent Installieren
+    ansible.builtin.shell: docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:latest
     args:
       executable: /bin/bash
