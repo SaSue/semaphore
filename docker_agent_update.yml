@@ -1,1 +1,9 @@
-
+---
+- name: Update packages on Ubuntu hosts
+  hosts: all
+  
+  tasks:
+  - name: Cleanup docker
+    ansible.builtin.shell: docker stop portainer_agent
+    args:
+      executable: /bin/bash
