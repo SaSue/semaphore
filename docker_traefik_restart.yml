@@ -1,0 +1,9 @@
+---
+- name: Traefik Restart
+  hosts: all
+  
+  tasks:
+  - name: Traefik Restart ausführen
+    ansible.builtin.shell: docker restart traefik
+    args:
+      executable: /bin/bash
