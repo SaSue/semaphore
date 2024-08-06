@@ -1,0 +1,9 @@
+---
+- name: DNS Restart
+  hosts: all
+  
+  tasks:
+  - name: DNS Restart ausführen
+    ansible.builtin.shell: docker restart dnsmasq
+    args:
+      executable: /bin/bash
