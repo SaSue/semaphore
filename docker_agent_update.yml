@@ -8,11 +8,16 @@
     args:
       executable: /bin/bash
 
-  - name: Docker Agent Remove
+  - name: Docker Agent Container Remove
     ansible.builtin.shell: docker remove portainer_agent
     args:
       executable: /bin/bash
 
+  - name: Docker Agent Image Remove
+    ansible.builtin.shell: docker rmi portainer/agent:latest
+    args:
+      executable: /bin/bash
+      
   - name: Docker Agent Installieren
     ansible.builtin.shell: docker run -d -p 9001:9001 --name portainer_agent --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/volumes:/var/lib/docker/volumes portainer/agent:latest
     args:
