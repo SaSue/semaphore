@@ -8,12 +8,12 @@
     args:
       executable: /bin/bash
 
-  - name: Docker Portainer Remove
+  - name: Docker Portainer Container Remove
     ansible.builtin.shell: docker remove portainer
     args:
       executable: /bin/bash
       
-  - name: Docker Portainer Remove
+  - name: Docker Portainer Image Remove
     ansible.builtin.shell: docker rmi portainer/portainer-ce:latest
     args:
       executable: /bin/bash
