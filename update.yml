@@ -21,20 +21,6 @@
          - duf
          - needrestart
          - htop
-         # - build-essential
-         # - curl
-         # - fail2ban
-         # - firewalld
-         # - git
-         # - needrestart
-         # - pwgen
-         # - resolvconf
-         # - restic
-         # - rsync
-         # - sudo
-         # - unbound
-         # - unzip
-         # - vim-nox
         state: latest
 
     - name: Check if a new kernel is available
